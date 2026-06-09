@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <link rel="icon" href="data:,">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Менеджер заявок на доступ до лабораторії </title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Менеджер заявок на доступ до лабораторії</h1>
+      <p>Мосійчук Данило</p>
+    </header>
+    
+    <main class="form-layout">
+        <div id="notice" style="display: none; padding: 10px; margin-bottom: 15px; border-radius: 4px; font-weight: bold;">
+        </div>
+      <section id="create-section">
+        <h2>Додати заявку</h2>
+        <form id="createForm">
+          
+          <div class="field">
+            <label for="userNameInput">Користувач</label>
+            <input id="userNameInput" type="text" placeholder="Напр., Петро Петрович" required />
+            <p class="error-text" id="userNameError"></p>
+          </div>
+          
+          <div class="field">
+            <label for="dateInput">Дата і час доступу</label>
+            <input id="dateInput" type="datetime-local" required />
+            <p class="error-text" id="dateError"></p>
+          </div>
+          
+          <div class="field">
+            <label for="accessTypeSelect">Тип доступу</label>
+            <select id="accessTypeSelect" required>
+              <option value="">Оберіть тип доступу</option>
+              <option value="Гостьовий">Гостьовий</option>
+              <option value="Студентський">Студентський</option>
+              <option value="Адміністративний">Адміністративний</option>
+            </select>
+            <p class="error-text" id="accessTypeError"></p>
+          </div>
+          
+          <div class="field">
+            <label for="statusSelect">Статус</label>
+            <select id="statusSelect" required>
+              <option value="Pending">Очікується</option>
+              <option value="Approved">Підтверджено</option>
+              <option value="Rejected">Відхилено</option>
+            </select>
+            <p class="error-text" id="statusError"></p>
+          </div>
+          
+          <div class="field">
+            <label for="commentsInput">Коментарі</label>
+            <textarea id="commentsInput" rows="3" placeholder="Причина доступу..."></textarea>
+            <p class="error-text" id="commentsError"></p>
+          </div>
+          
+          <div class="buttons">
+            <button type="submit">Додати заявку</button>
+            <button type="button" id="resetBtn">Очистити</button>
+          </div>
+        </form>
+      </section>
+
+        <section id="list-section">
+        <h2>Список заявок</h2>
+        
+        <div style="margin-bottom: 15px;">
+          <input type="text" id="searchInput" placeholder="Пошук за користувачем" style="padding: 8px; width: 100%; max-width: 300px; border: 1px solid #bbb; border-radius: 4px;">
+        </div>
+
+        <div id="listStatus" style="margin-bottom: 10px; font-weight: bold; color: #555;">
+        </div>
+
+        <table id="itemsTable">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Користувач</th>
+              <th id="sortByDateBtn" style="cursor: pointer; user-select: none;" title="Натисніть для сортування">Дата і час ↓ </th>              
+              <th>Тип доступу</th>
+              <th>Статус</th>
+              <th>Коментарі</th>
+              <th>Дії</th>
+            </tr>
+          </thead>
+          <tbody id="itemsTableBody">
+            </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
